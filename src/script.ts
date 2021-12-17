@@ -2,7 +2,11 @@ import './style.css';
 import * as THREE from 'three';
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import * as dat from 'dat.gui';
-import { times } from "lodash";
+import { times, shuffle } from "lodash";
+
+function plusOrMinus() {
+    return shuffle([-1, 1])[0];
+}
 
 //
 const loadingManager = new THREE.LoadingManager()
@@ -37,9 +41,9 @@ scene.add(ambientLight);
 
 times(5, () => {
     const pointLight = new THREE.PointLight(0xffffff, 0.25);
-    pointLight.position.x = 10 * Math.random();
-    pointLight.position.y = 10 * Math.random();
-    pointLight.position.z = 10 * Math.random();
+    pointLight.position.x = plusOrMinus() * 10 * Math.random();
+    pointLight.position.y = plusOrMinus() * 10 * Math.random();
+    pointLight.position.z = plusOrMinus() * 10 * Math.random();
     scene.add(pointLight);
 })
 
@@ -68,13 +72,15 @@ const planeMaterial = new THREE.MeshStandardMaterial({
     roughnessMap: planeroughnessTexture,
     normalMap: planenormalMapTexture
 });
-const basicMaterial = new THREE.MeshBasicMaterial({color: 0xff00ff })
 const planeMesh = new THREE.Mesh(plane, planeMaterial);
 planeMesh.position.set(0, -1.75, 0);
 planeMesh.rotateX(-Math.PI/2)
 
+const skyBox = new THREE.BoxGeometry(20, 20, 20);
+const basicMaterial = new THREE.MeshBasicMaterial({color: 0x010026, side: THREE.BackSide })
+const skyBoxMesh = new THREE.Mesh(skyBox, basicMaterial);
 
-scene.add(mesh, planeMesh);
+scene.add(mesh, planeMesh, skyBoxMesh);
 
 
 // Sizes
@@ -83,8 +89,8 @@ const sizes = {
     height: window.innerHeight
 }
 // Axe Helper
-const axesHelper = new THREE.AxesHelper(2);
-scene.add(axesHelper);
+/*const axesHelper = new THREE.AxesHelper(2);
+scene.add(axesHelper);*/
 
 // Camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
@@ -97,10 +103,10 @@ const renderer = new THREE.WebGLRenderer({
 });
 
 renderer.setSize(sizes.width, sizes.height);
-//renderer.render(scene, camera);
 
 
 const controls = new OrbitControls( camera, renderer.domElement );
+controls.maxDistance = 8
 
 /**
  * Animate
