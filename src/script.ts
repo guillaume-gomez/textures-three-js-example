@@ -16,19 +16,19 @@ loadingManager.onError = (reason: any) =>
 }
 
 const textureLoader = new THREE.TextureLoader(loadingManager);
-const spherecolorTexture = textureLoader.load('/generative/Abstract_011_basecolor.jpg');
-const sphereambiantOcclusionTexture = textureLoader.load('/generative/Abstract_011_ambientOcclusion.jpg');
-const sphereheightTexture = textureLoader.load('/generative/Abstract_011_height.png');
-const spheremetallicTexture = textureLoader.load('/generative/Abstract_011_metallic.jpg');
-const sphereroughnessTexture = textureLoader.load('/generative/Abstract_011_roughness.jpg');
-const spherenormalMapTexture = textureLoader.load('/generative/Abstract_011_normal.jpg');
+const spherecolorTexture = textureLoader.load('./generative/Abstract_011_basecolor.jpg');
+const sphereambiantOcclusionTexture = textureLoader.load('./generative/Abstract_011_ambientOcclusion.jpg');
+const sphereheightTexture = textureLoader.load('./generative/Abstract_011_height.png');
+const spheremetallicTexture = textureLoader.load('./generative/Abstract_011_metallic.jpg');
+const sphereroughnessTexture = textureLoader.load('./generative/Abstract_011_roughness.jpg');
+const spherenormalMapTexture = textureLoader.load('./generative/Abstract_011_normal.jpg');
 
-const planecolorTexture = textureLoader.load('/metal/Metal_scratched_009_basecolor.jpg');
-const planeambiantOcclusionTexture = textureLoader.load('/metal/Metal_scratched_009_ambientOcclusion.jpg');
-const planeheightTexture = textureLoader.load('/metal/Metal_scratched_009_height.png');
-const planemetallicTexture = textureLoader.load('/metal/Metal_scratched_009_metallic.jpg');
-const planeroughnessTexture = textureLoader.load('/metal/Metal_scratched_009_roughness.jpg');
-const planenormalMapTexture = textureLoader.load('/metal/Metal_scratched_009_normal.jpg');
+const planecolorTexture = textureLoader.load('./metal/Metal_scratched_009_basecolor.jpg');
+const planeambiantOcclusionTexture = textureLoader.load('./metal/Metal_scratched_009_ambientOcclusion.jpg');
+const planeheightTexture = textureLoader.load('./metal/Metal_scratched_009_height.png');
+const planemetallicTexture = textureLoader.load('./metal/Metal_scratched_009_metallic.jpg');
+const planeroughnessTexture = textureLoader.load('./metal/Metal_scratched_009_roughness.jpg');
+const planenormalMapTexture = textureLoader.load('./metal/Metal_scratched_009_normal.jpg');
 
 // Scene
 const scene = new THREE.Scene();
